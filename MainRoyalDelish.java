@@ -8,7 +8,12 @@ public class MainRoyalDelish {
 
         DoubleLinkedListPesanan daftarpesanan =new DoubleLinkedListPesanan();
 
-        int nomorAntrianOtomatis = 1;
+        daftarAntrian.tambahAntrian(new Pembeli(1, "Ainra", "08224500000"));
+        daftarAntrian.tambahAntrian(new Pembeli(2, "Danra", "08224511111"));
+        daftarAntrian.tambahAntrian(new Pembeli(3, "Sanri", "08224522222"));
+        daftarAntrian.tambahAntrian(new Pembeli(4, "Vania", "08422234556"));
+
+        int nomorAntrianOtomatis = 5;
         int pilihanMenu;
 
         do {
@@ -49,7 +54,6 @@ public class MainRoyalDelish {
 
                     nomorAntrianOtomatis++;
                     break;
-                
                 case 2:
                     System.out.println();
                     daftarAntrian.cetakAntrian();
@@ -112,5 +116,7 @@ public class MainRoyalDelish {
                     System.out.println("Menu tidak tersedia");
             }
         } while (pilihanMenu != 5);
+
+        input.close();
     }
 }

@@ -34,7 +34,7 @@ public class DoubleLinkedListPembeli {
 
         while (current != null) {
             
-            System.out.println("Nomor Anrian    : " + current.data.nomorAntrian);
+            System.out.println("Nomor Antrian   : " + current.data.nomorAntrian);
             System.out.println("Nama Pembeli    : " + current.data.namaPembeli);
             System.out.println("Nomor HP        : " + current.data.nomorHP);
 
@@ -46,7 +46,7 @@ public class DoubleLinkedListPembeli {
 
     public Pembeli hapusAntrian() {
         if (isEmpty()) {
-            System.out.println("Atrian kosong.");
+            System.out.println("Antrian kosong.");
             return null;   
         }
 
