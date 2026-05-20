@@ -40,6 +40,7 @@ public class DoubleLinkedListPembeli {
 
             System.out.println("-------------------------------------------");
 
+            // Proses traversal dilakukan menggunakan pointer next hingga mencapai node terakhir
             current = current.next;
         }
     }
@@ -55,6 +56,8 @@ public class DoubleLinkedListPembeli {
         if (head == tail) {
             head = tail = null;
         } else {
+            // antrian paling depan dihapus
+            // Pembeli paling depan sedang memesan makanan/minuman
             head = head.next;
             head.prev = null;
         }
@@ -72,4 +75,53 @@ public class DoubleLinkedListPembeli {
 
         return jumlah;
     } 
+
+    public void batalAntrian(int nomorAntrian) {
+
+        if (isEmpty()) {
+
+            System.out.println("Antrian kosong");
+            return;
+    }
+
+        NodePembeli current = head;
+
+        while (current != null) {
+
+            if (current.data.nomorAntrian == nomorAntrian) {
+
+                if (head == tail) {
+
+                    head = tail = null;
+            }
+            // jika node di pertama atau head
+            else if (current == head) {
+
+                head = head.next;
+                head.prev = null;
+            }
+            // jika node di terakhir atau tail
+            else if (current == tail) {
+
+                tail = tail.prev;
+                tail.next = null;
+            }
+
+            else {
+
+                current.prev.next = current.next;
+                current.next.prev = current.prev;
+            }
+
+            System.out.println("Antrian atas nama " + current.data.namaPembeli + " berhasil dibatalkan.");
+
+            return;
+        }
+
+        current = current.next;
+    }
+
+    System.out.println("Nomor antrian tidak ditemukan.");
+}
+
 }

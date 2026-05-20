@@ -8,6 +8,7 @@ public class MainRoyalDelish {
 
         DoubleLinkedListPesanan daftarpesanan =new DoubleLinkedListPesanan();
 
+        // 4 data ini disimpan ke double linked list antrean
         daftarAntrian.tambahAntrian(new Pembeli(1, "Ainra", "08224500000"));
         daftarAntrian.tambahAntrian(new Pembeli(2, "Danra", "08224511111"));
         daftarAntrian.tambahAntrian(new Pembeli(3, "Sanri", "08224522222"));
@@ -26,7 +27,8 @@ public class MainRoyalDelish {
             System.out.println("2. Cetak Antrian");
             System.out.println("3. Hapus Antrian dan Pesan");
             System.out.println("4. Laporan Pesanan");
-            System.out.println("5. Keluar");
+            System.out.println("5. Batalkan Antrian");
+            System.out.println("6. Keluar");
             System.out.println("============================================");
 
             System.out.print("Pilih Menu : ");
@@ -44,6 +46,7 @@ public class MainRoyalDelish {
                     System.out.print("Nomor HP        : ");
                     String nomorHP = input.nextLine();
 
+                    // membuat object baru dan dimasukkan ke linked list antrean
                     Pembeli pembeliBaru = new Pembeli(nomorAntrianOtomatis, namaPembeli, nomorHP);
 
                     daftarAntrian.tambahAntrian(pembeliBaru);
@@ -56,6 +59,8 @@ public class MainRoyalDelish {
                     break;
                 case 2:
                     System.out.println();
+                    // menampilkan seluruh antrean dari head sampai tail menggunakan traversal (print)
+                    // traversal digunakan untuk mengakses seluruh node dalam list
                     daftarAntrian.cetakAntrian();
 
                     System.out.println("Jumlah Antrian : " + daftarAntrian.jumlahAntrian());
@@ -87,6 +92,7 @@ public class MainRoyalDelish {
                     System.out.print("Harga Pesanan   : ");
                     int hargaPesanan = input.nextInt();
                     
+                    // membuat object pesanan dan disimpan ke linked list pesanan
                     Pesanan pesananBaru = new Pesanan(kodePesanan, namaPesanan, hargaPesanan, pembeliDilayani.namaPembeli);
 
                     daftarpesanan.tambahPesanan(pesananBaru);
@@ -96,26 +102,42 @@ public class MainRoyalDelish {
                     System.out.println("Pesanan berhasil ditambahkan");
                     System.out.println("Sisa Antrian : " + daftarAntrian.jumlahAntrian());
                 }
-
+                
                     break;
 
                 case 4:
                     System.out.println();
                     daftarpesanan.tampilLaporanPesanan();
+                    // daftarpesanan.sortingHargaDescending();
 
                     break;
                 
                 case 5:
                     System.out.println();
+                    System.out.println("============================================");
+                    System.out.println("              BATALKAN ANTRIAN              ");
+                    System.out.println("============================================");
+                    System.out.print("Masukkan nomor antrian : ");
+                    int nomorBatal = input.nextInt();
+
+                    daftarAntrian.batalAntrian(nomorBatal);
+
+                    System.out.println();
+                    daftarAntrian.cetakAntrian();
+                    System.out.println("Jumlah Antrian : " + daftarAntrian.jumlahAntrian());
+
+                    break;
+                case 6:
+                    System.out.println();
                     System.out.println("Terima kasih telah berkunjung.");
 
                     break; 
-                
+
                 default:
                     System.out.println();
                     System.out.println("Menu tidak tersedia");
             }
-        } while (pilihanMenu != 5);
+        } while (pilihanMenu != 6);
 
         input.close();
     }
